@@ -12,8 +12,7 @@ const app = express();
 
 //auto reload
 const url = `https://svrmc-backend.onrender.com/`;
-//const interval = 5 * 60 * 1000; // 5 minutes (300000 ms)
-const interval = 3 * 1000; // 30sec for testing
+const interval = 9 * 60 * 1000; // 9 minutes
 
 function reloadWebsite() {
   axios
