@@ -3,11 +3,37 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors'); // import cors
+const axios = require('axios');
 
 const adminRoutes = require('./src/routes/adminRoutes');
 const studentRoutes = require('./src/routes/studentRoutes');
 
 const app = express();
+
+//auto reload
+const url = `https://svrmc-backend.onrender.com/`;
+//const interval = 5 * 60 * 1000; // 5 minutes (300000 ms)
+const interval = 3 * 1000; // 30sec for testing
+
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log("website reloded");
+    })
+    .catch((error) => {
+      console.error(`Error : ${error.message}`);
+    });
+}
+
+setInterval(reloadWebsite, interval);
+
+
+app.get("/", (req, res) => {
+  res.status(200).send("OK");
+});
+
+
 app.use(express.json());
 
 // Enable CORS for all routes
