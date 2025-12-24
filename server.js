@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(cors());
 
 // static frontend (optional) - serve frontend folder
-app.use(express.static(path.join(__dirname, '..', 'frontend')));
+//app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 // API routes
 app.use('/api/admin', adminRoutes);
